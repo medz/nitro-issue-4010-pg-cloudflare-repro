@@ -1,0 +1,20 @@
+{
+  "name": "issue-4010-pg-cloudflare-repro",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "NITRO_BUILDER=rolldown nitro build",
+    "dev": "NITRO_BUILDER=rolldown nitro dev",
+    "worker:dev": "wrangler dev --config .output/server/wrangler.json --port 8787",
+    "worker:check": "CI=1 wrangler dev --config .output/server/wrangler.json --port 8787",
+    "deploy:dry-run": "wrangler deploy --dry-run --config .output/server/wrangler.json",
+    "repro": "pnpm run build && pnpm run worker:check"
+  },
+  "dependencies": {
+    "pg": "^8.16.3"
+  },
+  "devDependencies": {
+    "nitro": "latest",
+    "wrangler": "^4.63.0"
+  }
+}
