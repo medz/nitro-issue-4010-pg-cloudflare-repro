@@ -3,12 +3,13 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "NITRO_BUILDER=rolldown nitro build",
-    "dev": "NITRO_BUILDER=rolldown nitro dev",
-    "worker:dev": "wrangler dev --config .output/server/wrangler.json --port 8787",
-    "worker:check": "CI=1 wrangler dev --config .output/server/wrangler.json --port 8787",
-    "deploy:dry-run": "wrangler deploy --dry-run --config .output/server/wrangler.json",
-    "repro": "pnpm run build && pnpm run worker:check"
+    "nitro:build": "NITRO_BUILDER=rolldown nitro build",
+    "nitro:worker:check": "CI=1 wrangler dev --config .output/server/wrangler.json --port 8787",
+    "repro:nitro:fail": "pnpm run nitro:build && pnpm run nitro:worker:check",
+    "wrangler:direct:dev:check": "bash ./scripts/wrangler-direct-dev-check.sh",
+    "wrangler:direct:dry-run": "wrangler deploy --dry-run --config wrangler.direct.json",
+    "repro:wrangler:ok": "pnpm run wrangler:direct:dev:check && pnpm run wrangler:direct:dry-run",
+    "repro": "pnpm run repro:nitro:fail"
   },
   "dependencies": {
     "pg": "^8.16.3"

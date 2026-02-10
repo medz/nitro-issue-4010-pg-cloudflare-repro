@@ -1,0 +1,6 @@
+{
+  "name": "issue-4010-direct-wrangler",
+  "main": "server.ts",
+  "compatibility_date": "2026-02-09",
+  "compatibility_flags": ["nodejs_compat"]
+}

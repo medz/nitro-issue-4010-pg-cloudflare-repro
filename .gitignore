@@ -2,3 +2,6 @@ node_modules
 .output
 .wrangler
 .DS_Store
+.tmp.wrangler-direct.log
+.tmp.wrangler-direct-response.json
+.tmp.wrangler-direct-curl.err
